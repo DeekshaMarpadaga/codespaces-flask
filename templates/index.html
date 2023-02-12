@@ -1,67 +1,65 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>{% block title %} Add a New Course {% endblock %}</h1>
+    <h1>{% block title %} Enter information {% endblock %}</h1>
 
     <form method="POST" action="/">
         {{ form.csrf_token }}
+
         <p>
-            {{ form.title.label }}
-            {{ form.title(size=20) }}
+            {{ form.state.label }}
+            {{ form.state() }}
         </p>
 
-        {% if form.title.errors %}
+        {% if form.state.errors %}
             <ul class="errors">
-                {% for error in form.title.errors %}
+                {% for error in form.state.errors %}
                     <li>{{ error }}</li>
                 {% endfor %}
             </ul>
         {% endif %}
-
         <p>
-            {{ form.description.label }}
+            {{ form.housing.label }}
+            {{ form.housing() }}
         </p>
-        {{ form.description(rows=10, cols=50) }}
 
-        {% if form.description.errors %}
+        {% if form.housing.errors %}
             <ul class="errors">
-                {% for error in form.description.errors %}
+                {% for error in form.level.errors %}
                     <li>{{ error }}</li>
                 {% endfor %}
             </ul>
         {% endif %}
-
         <p>
-            {{ form.price.label }}
-            {{ form.price() }}
+            {{ form.transport.label }}
+            {{ form.transport() }}
         </p>
 
-        {% if form.price.errors %}
+        {% if form.transport.errors %}
             <ul class="errors">
-                {% for error in form.price.errors %}
+                {% for error in form.level.errors %}
                     <li>{{ error }}</li>
                 {% endfor %}
             </ul>
         {% endif %}
-
         <p>
-            {{ form.available() }} {{ form.available.label }}
+            {{ form.insurance.label }}
+            {{ form.insurance() }}
         </p>
 
-        {% if form.available.errors %}
+        {% if form.insurance.errors %}
             <ul class="errors">
-                {% for error in form.available.errors %}
+                {% for error in form.level.errors %}
                     <li>{{ error }}</li>
                 {% endfor %}
             </ul>
         {% endif %}
-
         <p>
-            {{ form.level.label }}
-            {{ form.level() }}
+            {{ form.meal_plan.label }}
+            {{ form.meal_plan() }}
         </p>
 
-        {% if form.level.errors %}
+        {% if form.meal_plan.errors %}
             <ul class="errors">
                 {% for error in form.level.errors %}
                     <li>{{ error }}</li>
@@ -69,8 +67,9 @@
             </ul>
         {% endif %}
 
+
         <p>
-            <input type="submit" value="Add">
+            <input type="submit" value="Submit">
         </p>
     </form>
 

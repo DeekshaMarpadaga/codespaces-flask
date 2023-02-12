@@ -1,0 +1,69 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+<body>
+    <p>Your loan will acculumate 4,800 dollar worth of interest in addition to the original 10,000 dollars</p>
+    <p>Leftover Income: 4,768</p>
+    <p>That leaves you with 398.83 per month. How would you like to budget it? </p>
+
+</body>
+
+    <form method="POST" action="/spend/">
+        {{ form.csrf_token }}
+
+       
+        <p>
+            {{ form.entertainment.label }}
+            {{ form.entertainment() }}
+        </p>
+
+
+
+        {% if form.entertainment.errors %}
+            <ul class="errors">
+                {% for error in form.entertainment.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <p>
+            {{ form.clothing.label }}
+            {{ form.clothing() }}
+        </p>
+
+        {% if form.clothing.errors %}
+            <ul class="errors">
+                {% for error in form.clothing.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <body>
+
+        <p>To Learn more about loan go to this website: https://www.nerdwallet.com/hub/category/student-loans</p>
+            
+        </body>
+        <p>
+            {{ form.invest.label }}
+            {{ form.invest() }}
+        </p>
+
+
+
+        {% if form.invest.errors %}
+            <ul class="errors">
+                {% for error in form.invest.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <p>
+            <p>To Learn more about investment options go to this website:https://www.investor.gov/introduction-investing/investing-basics/save-and-invest/learn-about-investment-options</p>
+
+        <p>
+            <input type="submit" value="Submit">
+        </p>
+    </form>
+
+{% endblock %}
